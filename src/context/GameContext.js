@@ -10,7 +10,6 @@ const GameContextProvider = ({ children }) => {
 	})
 	const [
 		[isFirst, setIsFirst],
-		[guess, setGuess],
 		[lastGuess, setLastGuess],
 		[passed, setPassed],
 		[message, setMessage],
@@ -18,9 +17,9 @@ const GameContextProvider = ({ children }) => {
 		[showAlert, setShowAlert],
 		[bounds, setBounds],
 		[secret, setSecret],
+		[view, setView],
 	] = [
 		useState(true),
-		useState(0),
 		useState(0),
 		useState(false),
 		useState(''),
@@ -31,20 +30,22 @@ const GameContextProvider = ({ children }) => {
 			lowerBound: defaults.lowerBound,
 		}),
 		useState(defaults.secret),
+		useState('Game'),
 	]
 
 	const sleep = (milliseconds) =>
 		new Promise((resolve) => {
-			setAlertResolve(resolve)
+			setAlertResolve((lastResolve) => ({ resolve }))
 			return setTimeout(resolve, milliseconds)
 		})
 
-	const alertThis = async (message) => {
-		setMessage(message)
-		setShowAlert(true)
-		await sleep(message.length * 300)
-		setShowAlert(false)
-		setMessage('')
+	const alertThis = (message) => {
+		setMessage((lastMessage) => message)
+		setShowAlert((lastState) => true)
+		sleep(message.length * 300).then(() => {
+			setShowAlert((lastState) => false)
+			setMessage((lastState) => '')
+		})
 	}
 
 	const hideAlert = () => {
@@ -52,23 +53,34 @@ const GameContextProvider = ({ children }) => {
 	}
 
 	const reset = () => {
-		setIsFirst(true)
-		setGuess(0)
-		setLastGuess(0)
-		setPassed(false)
+		setSecret(
+			(lastState) =>
+				Math.floor(Math.random() * defaults.upperBound) +
+				defaults.lowerBound
+		)
+		setBounds((bounds) => ({
+			upperBound: defaults.upperBound,
+			lowerBound: defaults.lowerBound,
+		}))
+		setIsFirst((lastState) => true)
+		setLastGuess((lastState) => 0)
+		setPassed((lastState) => false)
+		setView((lastState) => 'Game')
 	}
 
-	const generateSecret = () => {
-		setSecret(
-			Math.floor(Math.random() * bounds.upperBound) + bounds.lowerBound
-		)
+	const generateSecret = (x, y) => {
+		const upper = Number(x)
+		const lower = Number(y)
+		const newSecret = lower + Math.round(Math.random() * (upper - lower))
+		setSecret((lastState) => newSecret)
+		setIsFirst((lastState) => true)
+		setLastGuess((lastState) => 0)
+		setView((lastState) => 'Game')
 	}
 
 	const GameContextValues = {
 		isFirst,
 		setIsFirst,
-		guess,
-		setGuess,
 		lastGuess,
 		setLastGuess,
 		passed,
@@ -79,6 +91,8 @@ const GameContextProvider = ({ children }) => {
 		bounds,
 		setBounds,
 		secret,
+		view,
+		setView,
 		sleep,
 		alertThis,
 		hideAlert,

@@ -1,5 +1,8 @@
 :root {
 	--gameBlue: rgba(0, 204, 255);
+	--gameYellow: rgb(251, 255, 0);
+	--gameOrange: orange;
+	--gamePink: rgb(255, 0, 106);
 }
 
 * {
@@ -13,27 +16,30 @@
 body {
 	margin: 0;
 	padding: 0;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
 }
 
 button {
+	font-family: inherit;
 	cursor: pointer !important;
 }
 
 .app {
-	height: 100vh;
+	height: max(100vh, 800px);
 	width: 100%;
+	padding: 10px 20px;
+	gap: 30px;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
 	flex-wrap: wrap;
-	flex-direction: column;
 }
 
 .alertContainer {
 	position: fixed;
 	display: flex;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: center;
 	flex-wrap: wrap;
 	width: 100%;
 	height: 100%;
@@ -49,7 +55,7 @@ button {
 	height: 100%;
 	width: 100%;
 	z-index: -1;
-	background-color: transparent;
+	background-color: rgba(255, 0, 217, 0.074);
 }
 
 .alert {
@@ -57,9 +63,10 @@ button {
 	padding: 20px 30px;
 	color: #000;
 	background-color: #fff;
-	border: 3px solid var(--gameBlue);
+	border: 3px solid var(--gameOrange);
 	border-radius: 10px;
 	max-width: max(50%, 250px);
+	box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.1);
 	text-align: center;
 	display: flex;
 	justify-content: center;
@@ -80,10 +87,165 @@ button {
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
-	background-color: red;
+	background-color: var(--gamePink);
 	cursor: pointer;
 }
 
 .cancel:hover {
 	transform: scale(2, 2);
+}
+
+.contentView {
+	width: max(65%, 350px);
+	background-image: linear-gradient(
+		to bottom right,
+		var(--gameYellow),
+		var(--gameOrange),
+		var(--gamePink)
+	);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 20px 10px;
+	border-radius: 5px;
+}
+
+.brand {
+	width: fit-content;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	padding: 5px 5px;
+	border-radius: 10px;
+	color: var(--gamePink);
+}
+
+.imageBox {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	width: max(65%, 350px);
+	height: 450px;
+	background-image: url('../../public/guess.jpg');
+	flex-wrap: wrap;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.inGameOption {
+	display: flex;
+	justify-content: center;
+	position: sticky;
+	top: 10px;
+	align-items: center;
+	padding: 10px;
+    background-color: #fff;
+	border-radius: 10px;
+	font-size: 30px;
+	box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+}
+
+.title {
+	margin: 5px 0;
+	display: inline-block;
+	width: 100%;
+	color: #fff;
+	text-align: center;
+	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.flat {
+	width: 70%;
+	background-color: #fff;
+	margin-top: 20px;
+	padding: 10px;
+	flex-wrap: wrap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 0;
+	border-radius: 5px;
+}
+
+.subTitle {
+	font-size: 19px;
+}
+
+.inputContainer {
+	width: 100%;
+	display: flex;
+	padding: 10px;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.label {
+	display: inline-block;
+	width: 100%;
+	color: var(--gamePink);
+	text-align: center;
+	padding-bottom: 5px;
+}
+
+.field {
+	width: 100%;
+	padding: 5px;
+	color: rgb(53, 53, 53);
+	border-radius: 5px;
+	border: 0.5px solid var(--gamePink);
+}
+
+.field:focus,
+.field:hover {
+	outline: none;
+}
+
+.buttonDiv {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.submitBtn {
+	width: fit-content;
+	padding: 10px;
+	font-size: 20px;
+	box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	color: var(--gamePink);
+	border: #fff;
+	background-color: #fff;
+}
+
+.submitBtn:hover {
+	background-color: var(--gamePink);
+	color: #fff;
+}
+
+@media only screen and (max-width: 390px) {
+	.imageBox {
+		height: 370px !important;
+		align-items: center !important;
+		justify-content: space-between !important;
+		flex-direction: column !important;
+	}
+	.brand {
+		width: 100% !important;
+	}
+
+	.inGameOption {
+		width: 100%;
+	}
+
+	.flat {
+		width: 85% !important;
+	}
 }
