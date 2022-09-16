@@ -1,6 +1,6 @@
 # Guess 'd Num
 
-This is fun number guessing game built with React.
+This is a fun number guessing game built with React.
 
 ## Setup
 
