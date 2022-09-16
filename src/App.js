@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import guess from '../public/guess.jpg'
+import { useGame, useClasses } from './hooks'
+import styles from './styles/Global.module.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+	const {
+		isFirst,
+		setIsFirst,
+		guess,
+		setGuess,
+		lastGuess,
+		passed,
+		setPassed,
+		setMessage,
+		sleep,
+		alertThis,
+		reset,
+  } = useGame()
+  
+  return <div className={ useClasses(styles.app) }>
+    
+  </div>
 }
 
-export default App;
+export default App

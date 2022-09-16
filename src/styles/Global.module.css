@@ -1,0 +1,89 @@
+:root {
+	--gameBlue: rgba(0, 204, 255);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+*:not(body) {
+	transition: all 0.3s;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+button {
+	cursor: pointer !important;
+}
+
+.app {
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.alertContainer {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	padding: 50px 10px;
+}
+
+.mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+	background-color: transparent;
+}
+
+.alert {
+	position: relative;
+	padding: 20px 30px;
+	color: #000;
+	background-color: #fff;
+	border: 3px solid var(--gameBlue);
+	border-radius: 10px;
+	max-width: max(50%, 250px);
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.message {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+
+.cancel {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: red;
+	cursor: pointer;
+}
+
+.cancel:hover {
+	transform: scale(2, 2);
+}
