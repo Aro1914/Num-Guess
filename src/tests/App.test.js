@@ -40,10 +40,43 @@ describe('App view', () => {
 		userEvent.tab()
 		const button = screen.getByText('Submit')
 		userEvent.click(button)
-		const initialText = screen.getByText(`Please enter a value`, {
+		const alertMessage = screen.getByText(`Please enter a value`, {
 			selector: '.message',
 		})
-		expect(initialText).toBeInTheDocument()
+		expect(alertMessage).toBeInTheDocument()
+	})
+
+	test(`Alerts 'So close, try something higher' on a low guess`, () => {
+		render(<App />)
+		const input = screen.getByText('', { selector: '.field' })
+		userEvent.clear(input)
+		userEvent.tab()
+		userEvent.type(input, '0')
+		userEvent.tab()
+		const button = screen.getByText('Submit')
+		userEvent.click(button)
+		const alertMessage = screen.getByText(
+			`So close, try something higher`,
+			{
+				selector: '.message',
+			}
+		)
+		expect(alertMessage).toBeInTheDocument()
+	})
+
+	test(`Alerts 'Nice try, but go lower' on a high guess`, () => {
+		render(<App />)
+		const input = screen.getByText('', { selector: '.field' })
+		userEvent.clear(input)
+		userEvent.tab()
+		userEvent.type(input, '12')
+		userEvent.tab()
+		const button = screen.getByText('Submit')
+		userEvent.click(button)
+		const alertMessage = screen.getByText(`Nice try, but go lower`, {
+			selector: '.message',
+		})
+		expect(alertMessage).toBeInTheDocument()
 	})
 
 	test(`Displays the Game Config view on the click of the Config button`, () => {
