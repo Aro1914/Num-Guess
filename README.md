@@ -17,7 +17,11 @@ Afterwards, navigate to the project directory to download its dependencies using
 > npm install
 ```
 
-Upon a successful download of all dependencies, proceed to launch the application using:  
+Upon a successful download of all dependencies, proceed to either run the tests or launch the application using the following commands respectively:  
+
+```shell
+> npm test
+```
 
 ```shell
 > npm start
@@ -25,6 +29,6 @@ Upon a successful download of all dependencies, proceed to launch the applicatio
 
 ## Demo
 
-https://user-images.githubusercontent.com/68448315/190852541-782db9c6-d08a-4915-99c8-2daa3b38c308.mp4
+<https://user-images.githubusercontent.com/68448315/190852541-782db9c6-d08a-4915-99c8-2daa3b38c308.mp4>
 
 ## Have fun with it
