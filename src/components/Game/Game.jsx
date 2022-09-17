@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useGame, useClasses } from '../../hooks'
 import styles from '../../styles/Global.module.css'
 
@@ -17,6 +17,7 @@ const Game = () => {
 	} = useGame()
 
 	const [guess, setGuess] = useState('')
+	const inputRef = useRef()
 
 	const evaluate = () => {
 		if (guess === '') {
@@ -29,10 +30,12 @@ const Game = () => {
 			alertThis('So close, try something higher')
 			setIsFirst((lastState) => false)
 			setLastGuess((lastState) => guess)
+			inputRef.current.value = ''
 		} else {
 			alertThis('Nice try, but go lower')
 			setIsFirst((lastState) => false)
 			setLastGuess((lastState) => guess)
+			inputRef.current.value = ''
 		}
 	}
 
@@ -67,6 +70,7 @@ const Game = () => {
 							setGuess(e.currentTarget.value)
 						}}
 						className={useClasses(styles.field)}
+						ref={inputRef}
 					/>
 				</label>
 
