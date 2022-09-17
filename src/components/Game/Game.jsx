@@ -19,7 +19,6 @@ const Game = () => {
 	const [guess, setGuess] = useState('')
 
 	const evaluate = () => {
-		setIsFirst((lastState) => false)
 		if (guess === '') {
 			alertThis('Please enter a value')
 		} else if (Number(guess) === Number(secret)) {
@@ -28,9 +27,11 @@ const Game = () => {
 			setGuess((lastState) => '')
 		} else if (Number(guess) < secret) {
 			alertThis('So close, try something higher')
+			setIsFirst((lastState) => false)
 			setLastGuess((lastState) => guess)
 		} else {
 			alertThis('Nice try, but go lower')
+			setIsFirst((lastState) => false)
 			setLastGuess((lastState) => guess)
 		}
 	}
@@ -38,7 +39,8 @@ const Game = () => {
 	return (
 		<div className={useClasses(styles.contentView)}>
 			<h2 className={useClasses(styles.title)}>
-				Guess the number between {bounds.lowerBound} and{' '}{bounds.upperBound}
+				Guess the number between {bounds.lowerBound} and{' '}
+				{bounds.upperBound}
 			</h2>
 			<h4 className={useClasses(styles.title, styles.subTitle)}>
 				{passed
