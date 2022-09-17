@@ -30,7 +30,7 @@ const Game = () => {
 			}))
 			generateSecret(upperBound, lowerBound)
 			setView((lastState) => 'Game')
-			alertThis('Parameters Updated')
+			alertThis('Parameters updated')
 		}
 	}
 
