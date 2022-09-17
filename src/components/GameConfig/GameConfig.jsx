@@ -21,7 +21,7 @@ const Game = () => {
 	const confirm = () => {
 		if (Number(upperBound) <= Number(lowerBound)) {
 			alertThis(
-				`Upper Bound must be higher than lower bound`
+				`Upper bound must be higher than lower bound`
 			)
 		} else {
 			setBounds((bounds) => ({

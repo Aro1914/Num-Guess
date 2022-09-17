@@ -38,8 +38,7 @@ const Game = () => {
 	return (
 		<div className={useClasses(styles.contentView)}>
 			<h2 className={useClasses(styles.title)}>
-				Guess the number between {bounds.upperBound} and{' '}
-				{bounds.lowerBound}
+				Guess the number between {bounds.lowerBound} and{' '}{bounds.upperBound}
 			</h2>
 			<h4 className={useClasses(styles.title, styles.subTitle)}>
 				{passed
