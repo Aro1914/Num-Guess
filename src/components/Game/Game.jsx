@@ -30,12 +30,18 @@ const Game = () => {
 			alertThis('So close, try something higher')
 			setIsFirst((lastState) => false)
 			setLastGuess((lastState) => guess)
-			inputRef.current.value = ''
+			// eslint-disable-next-line no-restricted-globals
+			if (screen.availWidth <= 390) {
+				inputRef.current.value = ''
+			}
 		} else {
 			alertThis('Nice try, but go lower')
 			setIsFirst((lastState) => false)
 			setLastGuess((lastState) => guess)
-			inputRef.current.value = ''
+			// eslint-disable-next-line no-restricted-globals
+			if (screen.availWidth <= 390) {
+				inputRef.current.value = ''
+			}
 		}
 	}
 
