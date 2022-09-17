@@ -25,6 +25,6 @@ Upon a successful download of all dependencies, proceed to launch the applicatio
 
 ## Demo
 
-https://user-images.githubusercontent.com/68448315/190831654-a42d42d0-e7c3-4f33-9f4b-aeaa3f882cda.mp4
+https://user-images.githubusercontent.com/68448315/190852541-782db9c6-d08a-4915-99c8-2daa3b38c308.mp4
 
 ## Have fun with it
